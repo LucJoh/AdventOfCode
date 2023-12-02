@@ -4,9 +4,8 @@ fn main() {
 
 	let file_path = "input.txt";
 
-	println!("In file {}", file_path);
-
-	let strings = fs::read_to_string(file_path).expect("Cannot read the file");
+	let strings = fs::read_to_string(file_path)
+		.expect("Cannot read the file");
 
 	let strings_filtered_digits: String = strings
 		.chars()
@@ -18,14 +17,12 @@ fn main() {
 		.flat_map(|s| s.parse::<i32>())
 		.collect();
 
-	for row in &integers {
-		for &element in row {
-			sum = sum + element[0]; // finish this implementation
-		}
+	for row in strings_filtered_digits.chars() {
+			//let first = row.iter()
+			println!("{}", row);
 	}
-}
 
-println!("{:?}", integers[1]);
+
 
 
 }

@@ -1,7 +1,6 @@
 .PHONY : all
-all : part_1
+all : part_1 
 
-part_1 : part_1.rs
-	rustc -o $@ $< 
-
+part_1 : part_1.cpp
+	g++ -o $@ $< 
 

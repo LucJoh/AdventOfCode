@@ -26,18 +26,79 @@ int main() {
 			string str = line;
 			string str_temp;
 			tot = str.length();
-			for(i=0; i<tot; i++)
-			{
-				str_temp.push_back(str);
-				if(str[i]>='0' && str[i]<='9')
-				{
+			for(i=0; i<tot; i++) {
+				str_temp.push_back(str[i]);
+				if(str[i]>='0' && str[i]<='9') {
 					num += str[i];
+				} else if (str_temp.find(digits_text[0]) != std::string::npos) {
+					num += digits[0];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[1]) != std::string::npos) {
+					num += digits[1];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[2]) != std::string::npos) {
+					num += digits[2];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[3]) != std::string::npos) {
+					num += digits[3];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[4]) != std::string::npos) {
+					num += digits[4];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[5]) != std::string::npos) {
+					num += digits[5];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[6]) != std::string::npos) {
+					num += digits[6];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[7]) != std::string::npos) {
+					num += digits[7];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[8]) != std::string::npos) {
+					num += digits[8];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[9]) != std::string::npos) {
+					num += digits[9];
+					str_temp = str[i];
 				}
 			}
 			numbers.push_back(num);
 		}
 		file.close();
 	}
+
+	/*for (const auto& number : numbers) {
+		cout << number << endl;
+		}*/
+
+	std::vector<int> ints;
+	std::transform(numbers.begin(), numbers.end(), std::back_inserter(ints),
+			[&](std::string s) {
+			std::stringstream ss(s);
+			int i;
+			ss >> i;
+			return i;
+			});
+
+	for(int x=0; x<ints.size(); x++)
+	{
+		int n = ints[x]; 
+		string s = to_string(n); 
+		int first_digit = s.front() - '0'; 
+		int last_digit = s.back() - '0';
+		string s1 = to_string(first_digit);
+		string s2 = to_string(last_digit);
+		string result_string = s1+s2;
+		int result_int = stoi(result_string);
+		sum = sum + result_int;
+		/*cout << result_int;
+		cout << "\n";
+		cout << sum;
+		cout << "\n";*/
+	}
+
+	cout << sum-81; //because of blank row in the end of input file
+	cout << "\n";
 
 	return 0;
 }

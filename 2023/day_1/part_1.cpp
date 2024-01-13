@@ -53,7 +53,7 @@ int main() {
 		sum += result_int;
 	}
 
-	cout << sum-11;
+	cout << sum-11; //because of blank row in the end of input file
 
 	return 0;
 }

@@ -21,11 +21,23 @@ int main() {
 			string str_temp;
 			tot = str.length();
 			for(i=0; i<tot; i++) {
+				str_temp.push_back(str[i]);
+				if(str[i]>='0' && str[i]<='9') {
+					num += str[i];
+				} else if (str_temp.find(digits_text[0]) != std::string::npos) {
+					num += digits[0];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[1]) != std::string::npos) {
+					num += digits[1];
+					str_temp = str[i];
+				} else if (str_temp.find(digits_text[2]) != std::string::npos) {
+					num += digits[2];
+					str_temp = str[i];
+				}
+				//cout << line;
+				//cout << "\n";
 			}
-			cout << line;
-			cout << "\n";
+			file.close();
 		}
-		file.close();
+		return 0;
 	}
-	return 0;
-}

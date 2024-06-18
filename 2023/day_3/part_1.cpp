@@ -17,17 +17,17 @@ int main() {
 		return 1; 
 	}
 
-    int a;
-    while (input >> a)
-    {
-        printf("%d ", a);
-    }
+	int a;
+	while (input >> a)
+	{
+		printf("%d ", a);
+	}
 
-    getchar();
+	getchar();
 
-//	while (getline(input, line)) { 
-//		cout << line << endl; 
-//	} 
+	//	while (getline(input, line)) { 
+	//		cout << line << endl; 
+	//	} 
 
 	input.close(); 
 

@@ -9,7 +9,7 @@ int main() {
 	string line;
 	//ifstream input("calibration.txt");
 
-	std::fstream input("calibration.txt", std::ios_base::in);
+	//std::fstream input("calibration.txt", std::ios_base::in);
 
 	// Check if the file is successfully opened 
 	if (!input.is_open()) { 
@@ -17,17 +17,11 @@ int main() {
 		return 1; 
 	}
 
-	int a;
-	while (input >> a)
+	while (!input.eof())
 	{
-		printf("%d ", a);
+		getline(input, line);
+		cout << line << endl;
 	}
-
-	getchar();
-
-	//	while (getline(input, line)) { 
-	//		cout << line << endl; 
-	//	} 
 
 	input.close(); 
 

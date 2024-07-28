@@ -18,17 +18,23 @@ int main() {
 	std::vector<std::string> numbers;
 	int n;
 	int sum = 0;
-	int sum_part_2 = 0;
 	int red = 12;
 	int green = 13;
 	int blue = 14;
-	int biggest_red = 0;
-	int biggest_green = 0;
-	int biggest_blue = 0;
 	int game_id;
 	bool impossible_game = false;
 	string line;
-	ifstream file("input.txt");
+	ifstream file("../input/input.txt");
+
+	// error opening file
+	if (!file) {
+		cout << "" << endl;
+		cout << "Error opening input file" << endl;
+		cout << "Execute from within bin directory" << endl;
+		cout << "" << endl;
+		exit(1);
+	}
+
 	if (file.is_open()) {
 		while (getline(file, line)) {
 			string num;
@@ -42,21 +48,18 @@ int main() {
 						game_id = stoi(word);
 					}
 					else if (word == "red," or word == "red;" or word == "red" or word == "re") {
-						if (stoi(prev_word) > biggest_red) biggest_red = stoi(prev_word);
 						if (stoi(prev_word) > red) {
 							impossible_game = true;
 							//cout << "not possible red was" << prev_word << endl;
 						}
 					}
 					else if (word == "green," or word == "green;" or word == "green" or word == "gree") {
-						if (stoi(prev_word) > biggest_green) biggest_green = stoi(prev_word);
 						if (stoi(prev_word) > green) {
 							impossible_game = true;
 							//cout << "not possible green was" << prev_word << endl;
 						}
 					}
 					else if (word == "blue," or word == "blue;" or word == "blue" or word == "blu") {
-						if (stoi(prev_word) > biggest_blue) biggest_blue = stoi(prev_word);
 						if (stoi(prev_word) > blue) {
 							impossible_game = true;
 							//cout << "not possible blue was" << prev_word << endl;
@@ -75,14 +78,9 @@ int main() {
 				//cout << "sum is " << sum << endl;
 			}
 			impossible_game = false;
-			sum_part_2 += (biggest_red * biggest_green * biggest_blue);
-			biggest_red = 0;
-			biggest_green = 0;
-			biggest_blue = 0;
 		}
 		file.close();
-		//cout << sum << endl;
-		cout << sum_part_2 << endl;
+		cout << sum << endl;
 	}
 	return 0;
 }

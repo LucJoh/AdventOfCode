@@ -1,8 +1,23 @@
-.PHONY : all
-all : part_1 part_2 
+CC=g++
+BUILD_DIR=bin
+SRC_DIR=src
 
-part_1 : part_1.cpp
-	g++ -o $@ $< 
+.PHONY : all clean $(BUILD_DIR)
 
-part_2 : part_2.cpp
-	g++ -o $@ $< 
+all : $(BUILD_DIR) $(BUILD_DIR)/part_1 $(BUILD_DIR)/part_2
+
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+part_1: $(BUILD_DIR)/part_1
+
+part_2: $(BUILD_DIR)/part_2
+
+$(BUILD_DIR)/part_1 : $(SRC_DIR)/part_1.cpp | $(BUILD_DIR)
+	$(CC) -o $@ $< 
+
+$(BUILD_DIR)/part_2 : $(SRC_DIR)/part_2.cpp | $(BUILD_DIR)
+	$(CC) -o $@ $< 
+
+clean:
+	rm -r $(BUILD_DIR)

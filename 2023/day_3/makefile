@@ -1,37 +1,23 @@
-vim:noet
+CC=g++
+BUILD_DIR=bin
+SRC_DIR=src
 
-.PHONY : all
-all : part_1 part_2 part_1_ai 
+.PHONY : all clean $(BUILD_DIR)
 
-part_1 : part_1.cpp
-	g++ -o $@ $< 
+all : $(BUILD_DIR) $(BUILD_DIR)/part_1 $(BUILD_DIR)/part_2
 
-part_1_ai : part_1_ai.cpp
-	g++ -o $@ $<
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
-part_2 : part_2.cpp
-	g++ -o $@ $<
+part_1: $(BUILD_DIR)/part_1
+
+part_2: $(BUILD_DIR)/part_2
+
+$(BUILD_DIR)/part_1 : $(SRC_DIR)/part_1.cpp | $(BUILD_DIR)
+	$(CC) -o $@ $< 
+
+$(BUILD_DIR)/part_2 : $(SRC_DIR)/part_2.cpp | $(BUILD_DIR)
+	$(CC) -o $@ $< 
 
 clean:
-	rm -f part_1 part_2
-
-help:
-	@echo "$$HEADER"
-	@echo "Usage: make [all|part_1|part_2|clean|help]"
-	@echo ""
-
-define HEADER
-                     _         __ _ _         __
-     _ __ ___   __ _| | _____ / _(_) | ___   / _| ___  _ __  
-    | '_ ` _ \ / _` | |/ / _ \ |_| | |/ _ \ | |_ / _ \| '__| 
-    | | | | | | (_| |   <  __/  _| | |  __/ |  _| (_) | |    
-    |_| |_| |_|\__,_|_|\_\___|_| |_|_|\___| |_|  \___/|_|  
-      ___  _     _
-     / __|| |_ _| |_
-    | (_|_   _|_   _|
-     \___||_|   |_|
-
-
-endef
-
-export HEADER
+	rm -r $(BUILD_DIR)

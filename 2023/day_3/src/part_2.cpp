@@ -8,12 +8,15 @@ using namespace std;
 int main() {
 
 	fstream inputFile;
-	inputFile.open("input.txt", ios::in);
+	inputFile.open("../input/input.txt", ios::in);
 
-	// check if the file is successfully opened 
-	if (!inputFile.is_open()) { 
-		cerr << "Error opening the file!" << endl; 
-		return 1; 
+	// error opening file
+	if (!inputFile) {
+		cout << "" << endl;
+		cout << "Error opening input file" << endl;
+		cout << "Execute from within bin directory" << endl;
+		cout << "" << endl;
+		exit(1);
 	}
 
 	vector<string> lines;
@@ -50,27 +53,27 @@ int main() {
 				(j >= 0) && 
 				(j < lines[i].size());
 
-			if (withinBorders && isdigit(lines[i][j])) {
+			if (withinBorders && (lines[i][j]) == '*') {
 
 				// upper-left
-				if (i - 1 >= 0 && j - 1 >= 0 && lines[i-1][j-1] != '.' && !isdigit(lines[i-1][j-1])) {
+				if (i - 1 >= 0 && j - 1 >= 0 && isdigit(lines[i-1][j-1])) {
 					cout << lines[i][j] << lines[i-1][j-1] << endl;
 
-					int k = j - 1;
-					std::string number (1, lines[i][j]);
+					int k = j - 1 - 1;
+					std::string number (1, lines[i-1][j-1]);
 					//int number = 0;
 					// move backwards
-					while (k >= 0 && isdigit(lines[i][k])) {
-						number = lines[i][k] + number;
+					while (k >= 0 && isdigit(lines[i-1][k])) {
+						number = lines[i-1][k] + number;
 						k--;
 					}
 					k = j + 1;
 					// move forwards
-					while (k < lines[i].size() && isdigit(lines[i][k])) {
-						number = number + lines[i][k];
+					while (k < lines[i].size() && isdigit(lines[i-1][k-1])) {
+						number = number + lines[i-1][k];
 						k++;
 					}
-				
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -81,7 +84,7 @@ int main() {
 				}
 
 				// up
-				if (i - 1 >= 0 && lines[i-1][j] != '.' && !isdigit(lines[i-1][j])) {
+				if (i - 1 >= 0 && isdigit(lines[i-1][j])) {
 					cout << lines[i][j] << lines[i-1][j] << endl;
 
 					int k = j - 1;
@@ -100,7 +103,7 @@ int main() {
 					}
 
 					//sum += number;
-					
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -110,7 +113,7 @@ int main() {
 				}
 
 				// upper-right
-				if (i - 1 >= 0 && j + 1 < lines[i].size() && lines[i-1][j+1] != '.' && !isdigit(lines[i-1][j+1])) {
+				if (i - 1 >= 0 && j + 1 < lines[i].size() && isdigit(lines[i-1][j+1])) {
 					cout << lines[i][j] << lines[i-1][j+1] << endl;
 
 					int k = j - 1;
@@ -129,7 +132,7 @@ int main() {
 					}
 
 					//sum += number;
-					
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -139,7 +142,7 @@ int main() {
 				}
 
 				// left
-				if (j - 1 >= 0 && lines[i][j-1] != '.' && !isdigit(lines[i][j-1])) {
+				if (j - 1 >= 0 && isdigit(lines[i][j-1])) {
 					cout << lines[i][j] << lines[i][j-1] << endl;
 
 					int k = j - 1;
@@ -158,7 +161,7 @@ int main() {
 					}
 
 					//sum += number;
-					
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -168,7 +171,7 @@ int main() {
 				}
 
 				// right
-				if (j + 1 < lines[i].size() && lines[i][j+1] != '.' && !isdigit(lines[i][j+1])) {
+				if (j + 1 < lines[i].size() && isdigit(lines[i][j+1])) {
 					cout << lines[i][j] << lines[i][j+1] << endl;
 
 					int k = j - 1;
@@ -187,7 +190,7 @@ int main() {
 					}
 
 					//sum += number;
-					
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -197,7 +200,7 @@ int main() {
 				}
 
 				// lower-left
-				if (i + 1 < lines.size() && j - 1 >= 0 && lines[i+1][j-1] != '.' && !isdigit(lines[i+1][j-1])) {
+				if (i + 1 < lines.size() && j - 1 >= 0 && isdigit(lines[i+1][j-1])) {
 					cout << lines[i][j] << lines[i+1][j-1] << endl;
 
 					int k = j - 1;
@@ -216,7 +219,7 @@ int main() {
 					}
 
 					//sum += number;
-					
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -226,7 +229,7 @@ int main() {
 				}
 
 				// down
-				if (i + 1 < lines.size() && lines[i+1][j] != '.' && !isdigit(lines[i+1][j])) {
+				if (i + 1 < lines.size() && isdigit(lines[i+1][j])) {
 					cout << lines[i][j] << lines[i+1][j] << endl;
 
 					int k = j - 1;
@@ -245,7 +248,7 @@ int main() {
 					}
 
 					//sum += number;
-				  
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);
@@ -255,7 +258,7 @@ int main() {
 				}
 
 				// lower-right
-				if (i + 1 < lines.size() && j + 1 < lines[i].size() && lines[i+1][j+1] != '.' && !isdigit(lines[i+1][j+1])) {
+				if (i + 1 < lines.size() && j + 1 < lines[i].size() && isdigit(lines[i+1][j+1])) {
 					cout << lines[i][j] << lines[i+1][j+1] << endl;
 
 					int k = j - 1;
@@ -274,7 +277,7 @@ int main() {
 					}
 
 					//sum += number;
-					
+
 					if (std::stoi(number) != prevNumber) {
 						sum += std::stoi(number);
 						prevNumber = std::stoi(number);

@@ -13,7 +13,17 @@ int main() {
 	std::vector<std::string> numbers;
 	int tot, sum=0, i=0, j=0, k=0;
 	string line;
-	ifstream file("input.txt");
+	ifstream file("../input/input.txt");
+
+	// error opening file
+	if (!file) {
+		cout << "" << endl;
+		cout << "Error opening input file" << endl;
+		cout << "Execute from within bin directory" << endl;
+		cout << "" << endl;
+		exit(1);
+	}
+
 	if (file.is_open()) {
 		while (getline(file, line)) {
 			string num;

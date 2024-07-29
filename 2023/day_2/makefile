@@ -23,9 +23,12 @@ clean:
 	rm -r $(BUILD_DIR)
 
 help:
+	@echo ""
 	@echo "Usage: make [all|part_1|part_2|clean|help]"
-	@echo "all: Compile both parts"
-	@echo "part_1: Compile part 1"
-	@echo "part_2: Compile part 2"
-	@echo "clean: Remove bin directory"
-	@echo "help: Display this message"
+	@echo ""
+	@echo "	all: Compile both parts"
+	@echo "	part_1: Compile part 1"
+	@echo "	part_2: Compile part 2"
+	@echo "	clean: Remove bin directory"
+	@echo "	help: Display this message"
+	@echo ""

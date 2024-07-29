@@ -1,13 +1,24 @@
-## Compile 
+------------------
+      Compile
+------------------
 
-make all
+To compile the programs, run:
 
-## Run 
+    make all
 
-cd bin
+------------------
+        Run
+------------------
 
-./part_1
+Navigate to the 'bin' directory:
 
-or
+    cd bin
 
-./part_2
+To run Part 1:
+
+    ./part_1
+
+To run Part 2:
+
+    ./part_2
+

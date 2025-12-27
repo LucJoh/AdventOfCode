@@ -15,9 +15,9 @@
 ━━━━━━━━━━━━━━━━━━━━━━
 
 ```sh
-mkdir build
-cd build
-cmake ..
+mkdir build;
+cd build;
+cmake ..;
 cmake --build .
 ```
 
@@ -25,7 +25,9 @@ cmake --build .
 ▶️ Run
 ━━━━━━━━━━━━━━━━━━━━━━
 
+```sh
 ./run_day <day> <part>
+```
 
 Example:
 ```sh

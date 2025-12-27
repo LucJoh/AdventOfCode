@@ -1,0 +1,3 @@
+/home/lucas/git/AdventOfCode/2025/build/CMakeFiles/run_day.dir
+/home/lucas/git/AdventOfCode/2025/build/CMakeFiles/edit_cache.dir
+/home/lucas/git/AdventOfCode/2025/build/CMakeFiles/rebuild_cache.dir

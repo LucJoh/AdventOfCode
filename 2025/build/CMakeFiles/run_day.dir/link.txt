@@ -1,1 +1,0 @@
-/usr/lib64/ccache/c++ CMakeFiles/run_day.dir/src/day1_1.cpp.o CMakeFiles/run_day.dir/src/day1_2.cpp.o CMakeFiles/run_day.dir/src/main.cpp.o -o run_day 

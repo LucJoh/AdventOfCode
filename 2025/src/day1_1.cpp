@@ -9,7 +9,7 @@ void day1_1() {
   int dialIndex = 50;
   bool clockwise;
   // Read input
-  std::string file_path = "../input/day1_1/input.txt";
+  std::string file_path = "../input/day1/input.txt";
   std::ifstream file(file_path);
   std::string line;
   // Check if input file was found

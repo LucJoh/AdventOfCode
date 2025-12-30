@@ -3,8 +3,8 @@
 
 void day1_1();
 void day1_2();
-void day02();
-void day03();
+void day2_1();
+void day2_2();
 
 int main(int argc, char **argv) {
   if (argc != 3) {

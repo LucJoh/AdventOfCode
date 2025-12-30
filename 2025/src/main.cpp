@@ -24,7 +24,13 @@ int main(int argc, char **argv) {
       day1_2();
     }
     break;
-    //        case 2: day02(); break;
+  case 2:
+    if (part == 1) {
+      day2_1();
+    } else {
+      //      day2_2();
+    }
+    break;
     //        case 3: day03(); break;
   default:
     std::cerr << "Day " << day << " not implemented\n";

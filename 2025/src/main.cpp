@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     if (part == 1) {
       day2_1();
     } else {
-      //      day2_2();
+      day2_2();
     }
     break;
     //        case 3: day03(); break;

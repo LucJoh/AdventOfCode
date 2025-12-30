@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-void day2_1() {
+void day2_2() {
 
   // Declare variables
   long long sum = 0;
@@ -42,17 +42,22 @@ void day2_1() {
         // Check all IDs within range
         for (long long i = std::stoll(halves[0]); i < std::stoll(halves[1]);
              ++i) {
+          // Leetcode BS:
+          // If s is made by repeating a smaller substring,
+          // then s will appear inside (s + s) with the first
+          // and last characters removed.
           std::string id = std::to_string(i);
-          std::string halfId1 = id.substr(0, id.length() / 2);
-          std::string halfId2 = id.substr(id.length() / 2);
-          if (halfId1 == halfId2) {
-            sum += i;
+          std::string doubleId = id + id;
+          doubleId.pop_back();
+          doubleId.erase(0, 1);
+          if (doubleId.find(id) != std::string::npos) {
+            sum += std::stoll(id);
           }
         }
       }
     }
 
     // Print result
-    std::cout << "Day 2, Part 1 : " << sum << "\n";
+    std::cout << "Day 2, Part 2 : " << sum << "\n";
   }
 }

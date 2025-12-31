@@ -5,6 +5,8 @@ void day1_1();
 void day1_2();
 void day2_1();
 void day2_2();
+void day3_1();
+void day3_2();
 
 int main(int argc, char **argv) {
   if (argc != 3) {
@@ -12,7 +14,6 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  //    int day = std::atoi(argv[1]);
   int day = std::stoi(argv[1]);
   int part = std::stoi(argv[2]);
 
@@ -31,7 +32,13 @@ int main(int argc, char **argv) {
       day2_2();
     }
     break;
-    //        case 3: day03(); break;
+  case 3:
+    if (part == 1) {
+      day3_1();
+    } else {
+      //      day3_2();
+    }
+    break;
   default:
     std::cerr << "Day " << day << " not implemented\n";
     return 1;

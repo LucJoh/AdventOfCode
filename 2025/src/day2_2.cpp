@@ -1,9 +1,9 @@
 #include <algorithm>
-#include <bits/stdc++.h>
 #include <cctype>
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
 
 void day2_2() {
 
